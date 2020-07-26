@@ -8,17 +8,45 @@ import {
   StyleSheet,
   ActivityIndicator
 } from 'react-native';
+import Button from '../../ui/Button';
 
 const Home = ({ navigation }) => {
   const colorScheme = useColorScheme();
-
   const { container } = styles;
 
   return (
     <ScrollView style={[container, {backgroundColor: colorScheme === "dark" ? "#121212" : "#F9F9F9"}]}>
-      <TouchableOpacity onPress={() => navigation.push('RecentTransactions')} style={styles.recentTransactionsButton}>
-        <Text style={styles.recentTransactionsButtonText}>See all transactions</Text>
-      </TouchableOpacity>
+      <View
+        style={{
+          paddingHorizontal: 20,
+          marginTop: 10
+        }}
+      >
+        <Button 
+          title="Avatars"
+          isLoading={false}
+          onPress={() => navigation.push('Avatars')}
+          type={'solid'}
+          theme={colorScheme}
+          variant={'sharp'}
+          isRaised={true}
+          titleColor={'#fff'}
+          titleSize={14}
+          buttonMarginBottom={10}
+        />
+
+        <Button 
+          title="Buttons"
+          isLoading={false}
+          onPress={() => navigation.push('Buttons')}
+          type={'solid'}
+          theme={colorScheme}
+          variant={'sharp'}
+          isRaised={true}
+          titleColor={'#fff'}
+          titleSize={14}
+        />
+      </View>
     </ScrollView>
   )
 }
@@ -27,25 +55,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  recentTransactionsButton: {
-    backgroundColor: '#3eae1f',
-    padding: 16,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-
-    elevation: 5,
-  },
-  recentTransactionsButtonText: {
-    color: '#fff', 
-    alignSelf: 'center', 
-    fontSize: 14, 
-    fontWeight: '500'
-  }
 })
 
 export default Home;
